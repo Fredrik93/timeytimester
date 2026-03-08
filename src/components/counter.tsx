@@ -10,17 +10,20 @@ import { useEffect, useState } from "react"
 
 const Counter = () => {
 
-    const [timer, setTimer] = useState(50)
+    const [timer, setTimer] = useState(5)
     const start = () => {
         // no logic yet, only decrementing counter 
         setTimer(timer - 1)
     }
     useEffect(() => {
-        const timer = setInterval(() => {
-            setTimer(prev => prev - 1)
+        setInterval(() => {
+            console.log("timer:", timer)
+            if (timer >= 0) {
+                setTimer(prev => prev - 1)
+            }
+
         }, 1000)
 
-        return () => clearInterval(timer)
     }, [])
 
     return (
